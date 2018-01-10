@@ -258,6 +258,11 @@ namespace RoomCardNet
                             Net_AnsVerifyIAPOk(args);
                             return FuntionRet.FuntionRet_OK;
                         }
+                    case 0x781A755E://C_UserGetPagePicUrlInfo CRC32HashCode 得到公告信息
+                        {
+                            Net_CallSetNotice(args);
+                            return FuntionRet.FuntionRet_OK;
+                        }
                 }
                 return base.OnCallNetFuntion(nFunId, args);
             }
@@ -910,9 +915,23 @@ namespace RoomCardNet
             RoomCardNetClientModule.netModule.ClosePlayerLinkClient();
             MainRoot._gUIModule.pUnModalUIControl.SpawnQiTaDengLuDlg();
         }
+        //得到公告信息
+        public void Net_CallSetNotice(object[] args)
+        {
+            string[] list = new string[args.Length];
+            for (int i = 0; i < list.Length; i++)
+            {
+                list[i] = (string)args[i];
+            }
+            MainRoot._gMainRoot.NoticePagePicInfo = list;
 
-        //玩家的牌
-        public List<byte> m_PlayerCardList = new List<byte>();
+			GameObject obj = (GameObject)GameObject.Instantiate(Resources.Load("Prefab/NoticeBoard"), MainRoot._gUIModule.pMainCanvas.transform, false);
+			NoticeBoard dlg = obj.GetComponent<NoticeBoard>();
+			dlg.Initial(NoticeBoard.NoticeType.SHOW_MAX);
+
+		}
+		//玩家的牌
+		public List<byte> m_PlayerCardList = new List<byte>();
 
         //处理麻将房间内的打牌消息响应
         public void Net_AnsCommonMahjongNetMessage(uint nFunId, object[] args)

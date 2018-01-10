@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-class ToggleControl : MonoBehaviour {
+class ToggleControl : UnModalUIBase
+{
 
 	public Dictionary<int, ToggleBase> m_TogglesDic = new Dictionary<int, ToggleBase>();
 	/// <summary>

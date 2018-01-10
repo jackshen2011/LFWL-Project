@@ -296,7 +296,11 @@ class MainUIScript : UnModalUIBase
 	public void OnClickMsgBt()
 	{
 		Debug.Log("Unity: OnClickMsgBt!");
-		MainRoot._gUIModule.pUnModalUIControl.SpawnGameMsgDlg();
+		//MainRoot._gUIModule.pUnModalUIControl.SpawnGameMsgDlg();
+
+		GameObject obj = (GameObject)GameObject.Instantiate(Resources.Load("Prefab/NoticeBoard"), MainRoot._gUIModule.pMainCanvas.transform, false);
+		NoticeBoard dlg = obj.GetComponent<NoticeBoard>();
+		dlg.Initial(NoticeBoard.NoticeType.SHOW_NOMAL);
 	}
 	/// <summary>
 	/// 点击设置按键.

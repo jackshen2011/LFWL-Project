@@ -20,8 +20,8 @@ class ToggleBase : UnityEngine.UI.Toggle {
 		ts = gameObject.GetComponent<ToggleScript>();
 		if (ts  == null )
 		{
-			Debug.Log("Unity:"+ts.name);
 			ts = gameObject.AddComponent<ToggleScript>();
+			Debug.Log("Unity:" + ts.name);
 		}
 		ts.Initial();
 	}

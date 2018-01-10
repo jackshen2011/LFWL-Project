@@ -6,6 +6,7 @@ class ToggleScript : MonoBehaviour {
 	public int nIndexOfGroup = -1;  //本开关在组内的顺序,预制体内填写数值，从0开始
 	public ToggleControl MyControl;
 	public InputFieldBase MyInput;
+	public TextBase BtnText;
 	/// <summary>
 	/// 初始化开关在本组的序号，用于在开关List中定位
 	/// </summary>
@@ -47,6 +48,9 @@ class ToggleScript : MonoBehaviour {
 			case "10fen": nIndexOfGroup = 1; break;
 			case "zidingyifen": nIndexOfGroup = 2; break;
 
+			case "tabbtn1": nIndexOfGroup = 0; break;
+			case "tabbtn2": nIndexOfGroup = 1; break;
+			case "tabbtn3": nIndexOfGroup = 2; break;
 			default:
 				break;
 		}

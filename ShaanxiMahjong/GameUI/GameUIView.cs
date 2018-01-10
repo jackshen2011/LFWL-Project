@@ -1060,16 +1060,26 @@ class GameUIView : UnModalUIBase
             ChatFace.SetActive(!ChatFace.activeSelf);
         }
     }
+    bool ChatEmotionClickLock = false;//锁表情按钮，避免连续点击
+    private void UnLockChatEmotionClic()
+    {
+        ChatEmotionClickLock = false;
+    }
     /// <summary>
     /// 点击表情
     /// </summary>
     public void OnClickChatEmotion(int mEmotionFlag)
     {
-        if (RoomCardNet.RoomCardNetClientModule.netModule.wanMainClientPlayer != null)
+        if (!ChatEmotionClickLock)
         {
-            if (MainRoot._gRoomData)
+            if (RoomCardNet.RoomCardNetClientModule.netModule.wanMainClientPlayer != null)
             {
-                RoomCardNet.RoomCardNetClientModule.netModule.wanMainClientPlayer.Net_CallPlayerSendEmotion((int)MainRoot._gRoomData.cCurRoomData.eRoomType, MainRoot._gRoomData.cCurRoomData.nRoomId, mEmotionFlag);
+                if (MainRoot._gRoomData)
+                {
+                    RoomCardNet.RoomCardNetClientModule.netModule.wanMainClientPlayer.Net_CallPlayerSendEmotion((int)MainRoot._gRoomData.cCurRoomData.eRoomType, MainRoot._gRoomData.cCurRoomData.nRoomId, mEmotionFlag);
+                    ChatEmotionClickLock = true;
+                    Invoke("UnLockChatEmotionClic",3.0f);
+                }
             }
         }
     }

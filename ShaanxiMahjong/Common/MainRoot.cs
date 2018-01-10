@@ -76,6 +76,8 @@ class MainRoot : MonoBehaviour
     [HideInInspector]
     public bool IsSpawnHaiXuanOver = false;
 
+    [HideInInspector]
+    public string[] NoticePagePicInfo;//公告信息[i*2]-公告标题  [i*2+1]-公告图片链接
     /// <summary>
     /// Start函数，不解释
     /// </summary>
