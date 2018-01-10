@@ -746,6 +746,10 @@ class GameUIView : UnModalUIBase
                     FangKaRoomJuShuBtBase.enabled = false;
                     HelpBtObj.SetActive(false);
                     JieSanBtObj.SetActive(false);
+                    if (MainRoot._gRoomData.cCurRoomData.eOfficialRoomType == OneRoomData.OfficialRoomType.Type_MultiplayerRedPacket)
+                    {
+                        SpawnHongBaoSaiWaitPanel();
+                    }
                     break;
                 }
         }
@@ -1917,5 +1921,23 @@ class GameUIView : UnModalUIBase
         MainRoot._gUIModule.pUnModalUIControl.pGameUIView.OnSysMsgWaitEventHappen(10);//下炮完毕
         MainRoot._gUIModule.pUnModalUIControl.pGameUIView.OnSysMsgWaitEventHappen(11);//下炮完毕
         MainRoot._gUIModule.pUnModalUIControl.pGameUIView.OnSysMsgWaitEventHappen(12);//下炮完毕
+    }
+    /// <summary>
+    /// 红包赛游戏等待界面.
+    /// </summary>
+    [HideInInspector]
+    public HongBaoSaiWaitPanel pHongBaoSaiWaitPanel;
+    /// <summary>
+    /// 产生红包赛等待界面.
+    /// </summary>
+    void SpawnHongBaoSaiWaitPanel()
+    {
+        if (pHongBaoSaiWaitPanel != null)
+        {
+            return;
+        }
+        GameObject obj = (GameObject)Instantiate(Resources.Load("Prefab/HongBaoSaiUI/ED-HongBaoSaiWait"), transform, false);
+        pHongBaoSaiWaitPanel = obj.GetComponent<HongBaoSaiWaitPanel>();
+        pHongBaoSaiWaitPanel.Init();
     }
 }

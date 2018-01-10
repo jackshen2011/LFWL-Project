@@ -135,6 +135,7 @@ class QinRenBiSaiChangUI : ListUiDtCtrl
         if (RoomCardNet.RoomCardNetClientModule.netModule.wanMainClientPlayer != null)
         {
             MainRoot._gRoomData.cCacheRoomData.OfficialRoomName = "秦人比赛场-" + sBiSaiName;
+            MainRoot._gRoomData.cCacheRoomData.eOfficialRoomType = OneRoomData.OfficialRoomType.Type_MultiplayerRedPacket;
             RoomCardNet.RoomCardNetClientModule.netModule.wanMainClientPlayer.Net_CallQinRenBiSaiChangDlgDt(BiSaiId);
         }
     }

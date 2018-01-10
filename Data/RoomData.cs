@@ -16,6 +16,9 @@ public class OneRoomData
         Type_MultiplayerRedPacket,  //多用户红包
         Type_SingleplayerRedPacket,  //单用户红包
     }
+    /// <summary>
+    /// 秦人麻将官方比赛的子房间类型.
+    /// </summary>
     public OfficialRoomType eOfficialRoomType = OfficialRoomType.Type_MultiplayerRedPacket;
     /// <summary>
     /// 官方比赛(红包赛/钻石赛)名称.
