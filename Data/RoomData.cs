@@ -24,6 +24,10 @@ public class OneRoomData
     /// 官方比赛(红包赛/钻石赛)名称.
     /// </summary>
     public string OfficialRoomName = "";
+    /// <summary>
+    /// 官方比赛(红包赛/钻石赛)的场次信息.
+    /// </summary>
+    public int nOfficialRoomChangCi = 1;
 
     /// <summary>
     /// 房间状态
